@@ -58,41 +58,79 @@ public class Main {
             System.out.println("2 - Show checked out books");
             System.out.println("3 - Exit");
 
-            System.out.print("Enter your command");
+            System.out.print("Please enter your command: ");
 
             mainTheStoreHomeScreenCommand = scanner.nextInt();
 
-            switch (mainTheStoreHomeScreenCommand){
+            switch (mainTheStoreHomeScreenCommand) {
                 case 1:
-                    show availableBooks();
+                    show availableBooks ();
                     break;
 
                 case 2:
-                    show checkedOutBooks();
+                    show checkedOutBooks ();
+                    break;
 
                 case 3:
                     System.out.println("Exiting...");
+                    break;
 
                 default:
                     System.out.println("Command not found. Please try again.");
+                    break;
+
             }
 
         } while (mainTheStoreHomeScreenCommand != 3);
 
     }
 
-        public static void showAvailableBooks(Book[] inventory) {
-            System.out.println("Available Books: ");
-           for (Book book : inventory) {
-               boolean isBookCheckedOut = book.isCheckedOut();
-               if (!isBookCheckedOut) {
-                   System.out.println(book.getId() + book.getIsbn() + book.getTitle());
-               }
-           }
+    public static void showAvailableBooks(Book[] inventory) {
+        System.out.println("Available Books: ");
+        for (Book book : inventory) {
+            boolean isBookCheckedOut = book.isCheckedOut();
+            if (!isBookCheckedOut) {
+                System.out.println(book.getId() + book.getIsbn() + book.getTitle());
+            }
         }
+    }
 
-        public static void show checkedOutBooks();
+    public static void showCheckedOutBooks(Book[] inventory) {
+             System.out.println("Checked Out Books: ");
+             for(Book book : inventory) {
+                 boolean isBookCheckedOut = book.isCheckedOut();
+                 if (isBookCheckedOut) {
+                     System.out.println(book.getId() + book.getIsbn() + book.getTitle() + book.getCheckedOutTo());
+                 }
+             int mainCheckedOutBooks;
+                 do {
+                     System.out.println("Would you like to turn in a book?");
+                     System.out.println("Press C for yes or X to go back to home page");
 
+                     System.out.print("Please enter you command: ");
 
+                     mainCheckedOutBooks = scanner.nextLine().toUpperCase();
+
+                     switch (mainCheckedOutBooks) {
+                         case "C":
+                             checkInABook(inventory);
+                             break;
+
+                         case "X":
+                             System.out.println("Returning to home screen...");
+                             break;
+
+                         default:
+                             System.out.println("Command not found. Please try again.");
+                             break;
+
+                     }
+
+                 } while (scanner.equals("X"));
+
+    public static void checkInABook(Book[] inventory) {
+                     System.out.println();
+                     }
+                 }
 
 }
