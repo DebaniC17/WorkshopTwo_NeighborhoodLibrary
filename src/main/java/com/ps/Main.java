@@ -62,9 +62,37 @@ public class Main {
 
             mainTheStoreHomeScreenCommand = scanner.nextInt();
 
-        }
+            switch (mainTheStoreHomeScreenCommand){
+                case 1:
+                    show availableBooks();
+                    break;
 
+                case 2:
+                    show checkedOutBooks();
 
+                case 3:
+                    System.out.println("Exiting...");
+
+                default:
+                    System.out.println("Command not found. Please try again.");
+            }
+
+        } while (mainTheStoreHomeScreenCommand != 3);
 
     }
+
+        public static void showAvailableBooks(Book[] inventory) {
+            System.out.println("Available Books: ");
+           for (Book book : inventory) {
+               boolean isBookCheckedOut = book.isCheckedOut();
+               if (!isBookCheckedOut) {
+                   System.out.println(book.getId() + book.getIsbn() + book.getTitle());
+               }
+           }
+        }
+
+        public static void show checkedOutBooks();
+
+
+
 }
