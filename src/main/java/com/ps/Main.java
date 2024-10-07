@@ -90,7 +90,7 @@ public class Main {
         for (Book book : inventory) {
             boolean isBookCheckedOut = book.isCheckedOut();
             if (!isBookCheckedOut) {
-                System.out.println("ID: " + book.getId() + " ISBD: " + book.getIsbn() + " Title: " + book.getTitle());
+                System.out.println("ID: " + book.getId() + " ISBN: " + book.getIsbn() + " Title: " + book.getTitle());
             }
         }
 
