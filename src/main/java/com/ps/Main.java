@@ -93,9 +93,8 @@ public class Main {
                 System.out.println("ID: " + book.getId() + " ISBD: " + book.getIsbn() + " Title: " + book.getTitle());
             }
         }
-        int checkoutBookCommand;
 
-        System.out.println("If you would like to checkout enter 1 or 2 to return to home page: ");
+        System.out.println("If you would like to checkout a book enter 1 or if you would like to return to the home page enter 2: ");
         System.out.println("Please enter your command: ");
 
         int checkedOutBookCommand = scanner.nextInt();
@@ -104,7 +103,9 @@ public class Main {
         for (Book book : inventory) {
             if (book.getId() == checkedOutBookCommand && !book.isCheckedOut()) {
 
-                System.out.println("Enter the ");
+                System.out.println("Enter the ID number of the book you would like to checkout: ");
+                scanner.nextLine();
+
                 System.out.println("Please enter your name: ");
                 String name = scanner.nextLine();
                 book.checkOut(name);
@@ -127,7 +128,7 @@ public class Main {
         for (Book book : inventory) {
             boolean isBookCheckedOut = book.isCheckedOut();
             if (isBookCheckedOut) {
-                System.out.println(book.getId() + book.getIsbn() + book.getTitle() + book.getCheckedOutTo());
+                System.out.println("ID: " + book.getId() + " ISBN: " +  book.getIsbn() + " Title: " + book.getTitle() + " Checked out to: " + book.getCheckedOutTo());
             }
         }
         String userChoice;
@@ -136,8 +137,10 @@ public class Main {
             System.out.println("Press C for yes or X to go back to home page");
 
             System.out.print("Please enter you command: ");
+            userChoice = scanner.nextLine().toUpperCase();
 
-           userChoice = scanner.nextLine().toUpperCase();
+           System.out.println("Capture input: " + userChoice);
+
 
             switch (userChoice) {
                 case "C":
